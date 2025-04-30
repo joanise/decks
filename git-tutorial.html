@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Presentation: Git tutorial by Eric Joanis</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css"
+      integrity="sha512-0AUO8B5ll9y1ERV/55xq3HeccBGnvAJQsVGitNac/iQCLyDTGLUBMPqlupIWp/rJg0hV3WWHusXchEIdqFAv1Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/white.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/monokai.min.css"
+      integrity="sha512-z8wQkuDRFwCBfoj7KOiu1MECaRVoXx6rZQWL21x0BsVVH7JkqCp1Otf39qve6CrCycOOL5o9vgfII5Smds23rg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>A Git tutorial</h1>
+          <p>by Eric Joanis</p>
+          <h3>or don't be afraid of Git!</h3>
+        </section>
+        <section>
+          <h3>Motivation</h3>
+          <div style="text-align: left">
+            <p>OK, so we all know Git, why this tutorial?</p>
+            <ul>
+              <li>Because Git is complex</li>
+              <li>Because some are afraid of making mistakes</li>
+              <li>Because conflicts can be scary</li>
+              <li>Because I'm picky about your Pull Requests</li>
+              <li>
+                Because it's not that hard if you have intuitions of how it
+                works
+              </li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>The basics, with a hint of controversy</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p><code>git clone https://server/space/repo.git</code></p>
+            <p><code>git checkout -b dev.myfeature</code></p>
+            <p>
+              Work and commit stuff with <code>git add</code> and
+              <code>git commit</code>
+            </p>
+            <p><code>git fetch</code> (please don't pull!)</p>
+            <p><code>git rebase</code> (yes, rewrite your history!)</p>
+            <p><code>git push</code> (usually to a branch, for a PR)</p>
+            <p>Submit a Pull/Merge request</p>
+          </div>
+        </section>
+        <section>
+          <h3>A Git repo is a DAG</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>
+              A <b>commit</b> is:
+              <ul>
+                <li>a <b>node</b> in the DAG</li>
+                <li>with a <b>parent</b> (or several, or none)</li>
+                <li>with a <b>complete snapshot</b> of the code base</li>
+              </ul>
+            </p>
+            <div style="text-align: center" class="mermaid">
+              <pre>
+               gitGraph
+                commit
+                commit
+                branch dev1
+                commit
+                commit
+                checkout main
+                commit
+                branch dev2
+                commit
+                checkout main
+                commit
+                merge dev1
+                commit
+              </pre>
+            </div>
+          </div>
+        </section>
+        <section>
+          <div style="text-align: left" class="r-fit-text">
+            <p>But a commit is a <i>change set</i>, no?</p>
+            <p>&nbsp; &mdash; Well, no, not really, but yes, sort of.</p>
+            </div>
+        </section>
+      </div>
+    </div>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"
+      integrity="sha512-sMRSj1Ns64C2OE6VNS7WrV63OHW7dLAvi96CXRoy9AEe/tKF+868fhUJpc5ZKS166lwhe2ArCYjFitLJUY+VWA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/highlight/highlight.min.js"
+      integrity="sha512-xkVKkN0o7xECTHSUZ9zdsBYRXiAKH7CZ3aICpW6aQJZsufVVRLhEBTDjTpC1tPzm+gNZiOeW174zXAB2fOLsTg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/plugin/notes/notes.min.js"
+      integrity="sha512-tDzEYXTFwGOO3tWp8oTV3yGeZ4lG4gUt+tJFQTsP7W4jV/MJ1Rgr6m9aICicjh/ymL5GD6jkHXDi9cHKfctFGQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
+    <script>
+      // Reveal.initialize({plugins: [RevealNotes, RevealHighlight], });
+      Reveal.initialize({ plugins: [RevealNotes, RevealMermaid] });
+    </script>
+  </body>
+</html>
