@@ -98,7 +98,7 @@
           <div style="text-align: left" class="r-fit-text">
             <h3>Isn't a commit a <i>change set</i>?</h3>
             <small><pre>$ git show</pre></small>
-            <img src="assets/git-show.png" />
+            <img src="assets/git-show.png" alt="git show" />
           </div>
         </section>
         <section>
@@ -122,16 +122,19 @@
             </p>
             <ul>
               <li><code>git log --graph --oneline --decorate</code></li>
-              <li><code>gitk --all</code></li>
+              <li><code>gitk --all</code> and many other GUI options</li>
+              <li>My favourite alias: <code>git loga</code></li>
             </ul>
-            <p>My favourite aliases are in my <code>.gitconfig</code>:</p>
-            <small>
-              <pre>
-[alias]
-  logs = log --color --graph --format='%Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s' --date=short --date-order --decorate --abbrev-commit
-  loga = logs --all</pre
-              >
-            </small>
+            <br /><br />
+            <code>
+              [alias]<br />
+              &emsp; logs = log --color --graph --date=short --date-order
+              --decorate --abbrev-commit --format='%Cred%ad %Cgreen%h
+              %Cblue%an%Cred%d %Creset%s'<br />
+              &emsp; loga = logs --all
+            </code>
+            <br />
+            <img src="assets/git-loga.png" alt="git loga" />
           </div>
         </section>
       </div>
