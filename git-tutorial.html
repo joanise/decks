@@ -24,6 +24,11 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <style>
+      :root {
+        --r-heading-text-transform: normal;
+      }
+    </style>
   </head>
 
   <body>
@@ -125,15 +130,16 @@
               <li><code>gitk --all</code> and many other GUI options</li>
               <li>My favourite alias: <code>git loga</code></li>
             </ul>
-            <br /><br />
-            <code>
-              [alias]<br />
-              &emsp; logs = log --color --graph --date=short --date-order
-              --decorate --abbrev-commit --format='%Cred%ad %Cgreen%h
-              %Cblue%an%Cred%d %Creset%s'<br />
-              &emsp; loga = logs --all
-            </code>
-            <br />
+            <pre style="box-shadow: none; margin-left: 0">
+[alias]
+  logs = log --color --graph --date=short --date-order --format=myformat
+  loga = logs --all
+[log]
+  abbrevCommit = true
+  decorate = true
+[pretty]
+  myformat = %Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s</pre
+            >
             <img src="assets/git-loga.png" alt="git loga" />
           </div>
         </section>
@@ -160,7 +166,7 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
     <script>
       // Reveal.initialize({plugins: [RevealNotes, RevealHighlight], });
-      Reveal.initialize({ plugins: [RevealNotes, RevealMermaid] });
+      Reveal.initialize({ plugins: [RevealNotes, RevealMermaid], hash: true });
     </script>
   </body>
 </html>
