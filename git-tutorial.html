@@ -68,14 +68,12 @@
         <section>
           <h3>A Git repo is a Directed Acyclic Graph</h3>
           <div style="text-align: left" class="r-fit-text">
-            <p>
-              A <b>commit</b> is:
-              <ul>
-                <li>a <b>node</b> in the DAG</li>
-                <li>with a <b>parent</b> (or several, or none)</li>
-                <li>with a <b>complete snapshot</b> of the code base</li>
-              </ul>
-            </p>
+            <p>A <b>commit</b> is:</p>
+            <ul>
+              <li>a <b>node</b> in the DAG</li>
+              <li>with a <b>parent</b> (or several, or none)</li>
+              <li>with a <b>complete snapshot</b> of the code base</li>
+            </ul>
             <div style="text-align: center" class="mermaid">
               <pre>
                gitGraph
@@ -99,8 +97,16 @@
         <section>
           <div style="text-align: left" class="r-fit-text">
             <p>But a commit is a <i>change set</i>, no?</p>
-            <p>&nbsp; &mdash; Well, no, not really, but yes, sort of.</p>
-            </div>
+            <small><pre>$ git show</pre></small>
+            <img src="assets/git-show.png" />
+          </div>
+        </section>
+        <section>
+          <div style="text-align: left" class="r-fit-text">
+            <big><b>But a commit is a <i>change set</i>, no?</b></big>
+            <p>Pedantically speaking, no.</p>
+            <p>The <i>diff</i> between a commit and its parent is the change set.</p>
+          </div>
         </section>
       </div>
     </div>
