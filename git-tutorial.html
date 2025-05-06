@@ -96,16 +96,42 @@
         </section>
         <section>
           <div style="text-align: left" class="r-fit-text">
-            <p>But a commit is a <i>change set</i>, no?</p>
+            <h3>Isn't a commit a <i>change set</i>?</h3>
             <small><pre>$ git show</pre></small>
             <img src="assets/git-show.png" />
           </div>
         </section>
         <section>
           <div style="text-align: left" class="r-fit-text">
-            <big><b>But a commit is a <i>change set</i>, no?</b></big>
+            <h3>Isn't a commit a <i>change set</i>?</h3>
             <p>Pedantically speaking, no.</p>
-            <p>The <i>diff</i> between a commit and its parent is the change set.</p>
+            <p>
+              The <i>diff</i> between a commit and its parent is the change set.
+            </p>
+            <p>
+              When we rebase or cherry pick, we create a new commit from the
+              same change set.
+            </p>
+          </div>
+        </section>
+        <section>
+          <div style="text-align: left" class="r-fit-text">
+            <h3>Use a graph viewer</h3>
+            <p>
+              Display the full structure of the DAG to understand the history
+            </p>
+            <ul>
+              <li><code>git log --graph --oneline --decorate</code></li>
+              <li><code>gitk --all</code></li>
+            </ul>
+            <p>My favourite aliases are in my <code>.gitconfig</code>:</p>
+            <small>
+              <pre>
+[alias]
+  logs = log --color --graph --format='%Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s' --date=short --date-order --decorate --abbrev-commit
+  loga = logs --all</pre
+              >
+            </small>
           </div>
         </section>
       </div>
