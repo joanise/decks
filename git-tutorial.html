@@ -26,6 +26,11 @@
       :root {
         --r-heading-text-transform: normal;
       }
+      ul.no-bullets {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+      }
     </style>
   </head>
 
@@ -139,6 +144,23 @@
   myformat = %Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s</pre
             >
             <img src="assets/git-loga.png" alt="git loga" />
+          </div>
+        </section>
+        <section>
+          <h3>Branching and rebasing</h3>
+          <div style="text-align: left">
+              <p>Branching is cheap</p>
+              <p>
+                <code>git switch -c dev.something</code><br />
+                <code>git commit -m "some commit"</code><br />
+                <code>git fetch</code><br />
+                <code>git rebase origin/main</code>
+              </p>
+
+              <p>&nbsp;</p>
+              <p>Commit often, and clean up after</p>
+              <p>Your <code>dev</code> branches are yours!<br>
+                Rewrite them even if you've already pushed them.</p>
           </div>
         </section>
       </div>
