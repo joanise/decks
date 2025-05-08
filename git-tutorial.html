@@ -149,18 +149,40 @@
         <section>
           <h3>Branching and rebasing</h3>
           <div style="text-align: left">
-              <p>Branching is cheap</p>
-              <p>
-                <code>git switch -c dev.something</code><br />
-                <code>git commit -m "some commit"</code><br />
-                <code>git fetch</code><br />
-                <code>git rebase origin/main</code>
-              </p>
-
-              <p>&nbsp;</p>
-              <p>Commit often, and clean up after</p>
-              <p>Your <code>dev</code> branches are yours!<br>
-                Rewrite them even if you've already pushed them.</p>
+            <p>Branching is cheap</p>
+            <p>
+              <code>git switch -c dev.something</code><br />
+              <code>git commit -m "some commit"</code><br />
+              <code>git fetch</code><br />
+              <code>git rebase origin/main</code>
+            </p>
+            <p>&nbsp;</p>
+            <p>Commit often, and clean up after</p>
+            <p>
+              Your <code>dev</code> branches are yours!<br />
+              Rewrite them even if you've already pushed them.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Commit a lot but clean up for the PR</h3>
+          <div style="text-align: left">
+            <p style="line-height: 0.7">
+              <code style="font-size: 0.5em">
+                git switch -c dev.branching<br />
+                git commit -a -m'Starting drafting branching and rebasing'<br />
+                git commit -a -m'Ooops, typo'<br />
+                git commit -a -m'Make it clearer'<br />
+                git commit -a -m"Why won't all the lines fit on the slide?"<br />
+                git commit -a -m'Typo'
+              </code>
+            </p>
+            <p><code>git rebase -i main</code></p>
+            <img src="assets/rebase-i.png" alt="rebasing menu" />
+            <img
+              src="assets/history-rewrite.png"
+              alt="long and clean versions of a feature branch"
+            />
           </div>
         </section>
       </div>
