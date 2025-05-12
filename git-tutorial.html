@@ -38,9 +38,8 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <h1>A Git tutorial</h1>
+          <h1>An opinionated<br />Git tutorial</h1>
           <p>by Eric Joanis</p>
-          <h3>or don't be afraid of Git!</h3>
         </section>
         <section>
           <h3>Motivation</h3>
@@ -120,43 +119,51 @@
               When we rebase or cherry pick, we create a new commit from the
               same change set.
             </p>
+            <p>&nbsp;</p>
+            <p>Who cares? Good question!<br /></p>
+            <img src="assets/git-loga.png" alt="git loga" />
           </div>
         </section>
         <section>
+          <h3>Use a graph viewer</h3>
           <div style="text-align: left" class="r-fit-text">
-            <h3>Use a graph viewer</h3>
-            <p>
-              Display the full structure of the DAG to understand the history
-            </p>
+            Any idea what's going on here?<br />
+            <code>$ git log --oneline --decorate --all</code>
+          </div>
+          <img src="assets/git-log-oneline-long.png" alt="git log, no graph" />
+        </section>
+        <section>
+          <h3>Use a graph viewer</h3>
+          <img
+            src="assets/git-logs-long.png"
+            alt="git logs, showing the graph"
+          />
+        </section>
+        <section>
+          <h3>Use a graph viewer</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>There are many Git graph viewers, pick one you like.</p>
             <ul>
-              <li><code>git log --graph --oneline --decorate</code></li>
-              <li><code>gitk --all</code> and many other GUI options</li>
-              <li>My favourite alias: <code>git loga</code></li>
-            </ul>
+              <li><code>git log --graph --oneline --decorate --all</code></li>
+              <li><code>tig --all</code></li>
+              <li><code>gitk --all</code> and many other GUIs</li>
+              <li>
+                My favourite alias: <code>git loga</code> (output: see previous slide) <br />
+                In my <code>~/.gitconfig</code>:
             <pre style="box-shadow: none; margin-left: 0">
 [alias]
-  logs = log --color --graph --date=short --date-order --format=myformat
+  logs = log --color --graph --date=short --date-order --format=logs
   loga = logs --all
 [log]
   abbrevCommit = true
   decorate = true
 [pretty]
-  myformat = %Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s</pre
+  logs = %Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s</pre
             >
-            <img src="assets/git-loga.png" alt="git loga" />
+            <!--<img src="assets/git-loga.png" alt="git loga" />-->
+              </li>
+            </ul>
           </div>
-        </section>
-        <section>
-          <h3>Flat log</h3>
-          <code>$ git log --oneline --decorate --all</code>
-          <img src="assets/git-log-oneline-long.png" alt="git log, no graph" />
-        </section>
-        <section>
-          <h3>Graph log: &nbsp; <code>$ git loga</code></h3>
-          <img
-            src="assets/git-logs-long.png"
-            alt="git logs, showing the graph"
-          />
         </section>
         <section>
           <h3>Branching and rebasing</h3>
