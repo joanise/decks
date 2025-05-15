@@ -145,12 +145,15 @@
             <p>There are many Git graph viewers, pick one you like.</p>
             <ul>
               <li><code>git log --graph --oneline --decorate --all</code></li>
-              <li><code>tig --all</code></li>
-              <li><code>gitk --all</code> and many other GUIs</li>
               <li>
-                My favourite alias: <code>git loga</code> (output: see previous slide) <br />
+                <code>tig --all</code>, &nbsp; <code>gitk --all</code>, &nbsp;
+                <code>git-graph</code>, &nbsp; <code>serie</code>, &nbsp; etc.
+              </li>
+              <li>
+                My favourite alias: <code>git loga</code> (output: see previous
+                slide) <br />
                 In my <code>~/.gitconfig</code>:
-            <pre style="box-shadow: none; margin-left: 0">
+                <pre style="box-shadow: none; margin-left: 0">
 [alias]
   logs = log --color --graph --date=short --date-order --format=logs
   loga = logs --all
@@ -159,8 +162,8 @@
   decorate = true
 [pretty]
   logs = %Cred%ad %Cgreen%h %Cblue%an%Cred%d %Creset%s</pre
-            >
-            <!--<img src="assets/git-loga.png" alt="git loga" />-->
+                >
+                <!--<img src="assets/git-loga.png" alt="git loga" />-->
               </li>
             </ul>
           </div>
@@ -173,7 +176,7 @@
               <code>git switch -c dev.something</code><br />
               <code>git commit -m "some commit"</code><br />
               <code>git fetch</code><br />
-              <code>git rebase origin/main</code>
+              <code>git rebase origin/main</code><br />
             </p>
             <p>&nbsp;</p>
             <p>Commit often, and clean up after</p>
@@ -202,6 +205,135 @@
               src="assets/history-rewrite.png"
               alt="long and clean versions of a feature branch"
             />
+          </div>
+        </section>
+        <section>
+          <h3>Commit a lot but clean up for the PR</h3>
+          <div style="text-align: left">
+            <p>
+              <a href="https://render.com/blog/git-organized-a-better-git-flow"
+                >Git Organized: A Better Git Workflow
+                <br />
+                <small>
+                  <code
+                    >https://render.com/blog/git-organized-a-better-git-flow</code
+                  >
+                </small>
+              </a>
+            </p>
+            <p>TL;DR:</p>
+            <ul>
+              <li>Commit a lot</li>
+              <li>reset with <code>git reset origin/main</code></li>
+              <li>Create new, logically-grouped commits</li>
+              <li>Submit a beautiful PR that makes Eric happy!</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>Prefer fetch to pull; rebase to merge</h3>
+          <div style="text-align: left">
+            <p><code>git pull</code> three times while you work:</p>
+            <img
+              src="assets/git-pull-3times.png"
+              alt="effect of doing pull three times"
+            />
+          </div>
+        </section>
+        <section>
+          <h3>Prefer fetch to pull; rebase to merge</h3>
+          <div style="text-align: left">
+            <p>And merge the PR &nbsp; ☹️</p>
+            <img
+              src="assets/git-pull-3times-merged.png"
+              alt="three pulls and a merge"
+            />
+          </div>
+        </section>
+        <section>
+          <h3>Prefer fetch to pull; rebase to merge</h3>
+          <div style="text-align: left">
+            <p><code>git fetch</code> and <code>git rebase</code> instead:</p>
+            <img
+              src="assets/git-rebase-instead.png"
+              alt="effect of rebasing instead"
+            />
+          </div>
+        </section>
+        <section>
+          <h3>Prefer fetch to pull; rebase to merge</h3>
+          <div style="text-align: left">
+            <p>And merge the PR &nbsp; ☺️</p>
+            <img
+              src="assets/git-rebase-instead-merged.png"
+              alt="three rebases and a merge"
+            />
+          </div>
+        </section>
+        <section>
+          <h3>But don't rebase the official history</h3>
+          <div style="text-align: left">
+            <p>
+              You might have heard warnings against rebasing published contents.
+            </p>
+            <p>
+              Rebase your dev branches and will, delete them when you're done.
+              They're yours, and they're disposable.
+            </p>
+            <p>
+              But indeed, avoid rebasing <code>main</code> or branches that are
+              part of the record, unless you really know what you're doing.
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Git branching commands</h3>
+          <div style="text-align: left">
+            <table style="font-size: 0.65em; width: 100%">
+              <colgroup>
+                <col span="1" style="width: 71%" />
+                <col span="1" style="width: 29%" />
+              </colgroup>
+              <tr>
+                <td>
+                  <code>git switch -c new_branch</code>
+                  <br />
+                  <code>git checkout -b new_branch</code>
+                </td>
+                <td>Create a branch and switch to it</td>
+              </tr>
+              <tr>
+                <td><code>git branch new_branch commitish</code></td>
+                <td>Create a branch from a specific commit(ish)</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>git switch some_branch</code>
+                  <br />
+                  <code>git checkout some_branch</code>
+                </td>
+                <td>Switch to a branch</td>
+              </tr>
+              <tr>
+                <td><code>git push -u origin my_br</code></td>
+                <td>First push of a branch</td>
+              </tr>
+              <tr>
+                <td><code>git push origin my_br</code></td>
+                <td>Push branch updates</td>
+              </tr>
+              <tr>
+                <td><code>git push --force-with-lease origin my_br</code></td>
+                <td>Push after a rebase</td>
+              </tr>
+              <tr>
+                <td>
+                  <code>git branch -d old_branch</code>
+                </td>
+                <td>Delete a branch</td>
+              </tr>
+            </table>
+            <p></p>
           </div>
         </section>
       </div>
