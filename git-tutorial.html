@@ -287,7 +287,7 @@
           </div>
         </section>
         <section>
-          <h3>Git branching commands</h3>
+          <h3>Git commands for branches</h3>
           <div style="text-align: left">
             <table style="font-size: 0.65em; width: 100%">
               <colgroup>
@@ -334,6 +334,31 @@
               </tr>
             </table>
             <p></p>
+          </div>
+        </section>
+        <section>
+          <h3>Git commands for rewriting history</h3>
+          <div style="text-align: left">
+            <table style="font-size: 0.65em; width: 100%">
+              <colgroup>
+                <col span="1" style="width: 61%" />
+                <col span="1" style="width: 39%" />
+              </colgroup>
+              <tr>
+                <td><code>git fetch</code></td>
+                <td>Get new commits from origin</td>
+              </tr>
+              <tr>
+                <td><code>git rebase origin/main</code></td>
+                <td>Rebase my current branch onto origin/main</td>
+              </tr>
+              <tr>
+                <td><code>git rebase -i commitish</code></td>
+                <td>Interactive rebase</td>
+              </tr>
+              <tr><td><code>git cherry-pick commitish</code></td>
+              <td>"Steal" one commit from another branch</td></tr>
+            </table>
           </div>
         </section>
       </div>
