@@ -31,6 +31,9 @@
         margin: 0;
         padding: 0;
       }
+      code {
+        background-color: lightgray;
+      }
     </style>
   </head>
 
@@ -86,16 +89,16 @@
                gitGraph
                 commit
                 commit
-                branch dev1
+                branch dev.feature1
                 commit
                 commit
                 checkout main
                 commit
-                branch dev2
+                branch dev.bug-fix2
                 commit
                 checkout main
                 commit
-                merge dev1
+                merge dev.feature1
                 commit
               </pre>
             </div>
@@ -277,7 +280,7 @@
               You might have heard warnings against rebasing published contents.
             </p>
             <p>
-              Rebase your dev branches and will, delete them when you're done.
+              Rebase your dev branches at will, delete them when you're done.
               They're yours, and they're disposable.
             </p>
             <p>
