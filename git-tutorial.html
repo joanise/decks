@@ -41,23 +41,65 @@
     <div class="reveal">
       <div class="slides">
         <section>
+          <p>&nbsp;</p>
           <h1>An opinionated<br />Git tutorial</h1>
           <p>by Eric Joanis</p>
+          <p class="r-stretch"></p>
+          <p><small>&copy; 2025, National Research Council Canada</small></p>
         </section>
         <section>
           <h3>Motivation</h3>
           <div style="text-align: left">
-            <p>OK, so we all know Git, why this tutorial?</p>
+            <p>OK, so we all know of Git, why this tutorial?</p>
+            <p>Because:</p>
             <ul>
-              <li>Because Git is complex</li>
-              <li>Because some are afraid of making mistakes</li>
-              <li>Because conflicts can be scary</li>
-              <li>Because I'm picky about your Pull Requests</li>
-              <li>
-                Because it's not that hard if you have intuitions of how it
-                works
-              </li>
+              <li>Git is complex</li>
+              <li>Some are afraid of making mistakes</li>
+              <li>Conflicts can be scary</li>
+              <li>I'm picky about your Pull Requests</li>
+              <li>It's not that hard if you have intuitions of how it works</li>
             </ul>
+          </div>
+        </section>
+        <section>
+          <h3>The basics</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>You might want to:</p>
+            <ul>
+              <li>Get a local copy of a project.</li>
+              <li>Make changes to it.</li>
+              <li>Contribute these changes to the project.</li>
+              <li>Retrieve changes others have made.</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>The basics</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>You might want to:</p>
+            <ul style="margin-right: 15em; font-size: 100%">
+              <li>Get a local copy of a project.</li>
+              <p class="fragment">
+                <code>git clone http://server/space/repo.git</code>
+              </p>
+              <li>Make changes to it.</li>
+              <p class="fragment">
+                Write and change code <br />
+                <code>git add &lt;changed files></code> <br />
+                <code>git commit</code>
+              </p>
+              <li>Contribute these changes to the project.</li>
+              <p class="fragment">
+                <code>git switch -c dev.myfeature</code> <br />
+                <code>git push -u origin dev.myfeature</code>
+              </p>
+              <li>Retrieve changes others have made.</li>
+              <p class="fragment">
+                <code>git fetch</code> <br />
+                <code>git rebase</code>
+              </p>
+            </ul>
+            <p class="r-stretch"></p>
           </div>
         </section>
         <section>
@@ -359,9 +401,20 @@
                 <td><code>git rebase -i commitish</code></td>
                 <td>Interactive rebase</td>
               </tr>
-              <tr><td><code>git cherry-pick commitish</code></td>
-              <td>"Steal" one commit from another branch</td></tr>
+              <tr>
+                <td><code>git cherry-pick commitish</code></td>
+                <td>"Steal" one commit from another branch</td>
+              </tr>
             </table>
+          </div>
+        </section>
+        <section>
+          <h3>Key takeaways</h3>
+          <div style="text-align: left">
+            <p>Branches are cheap</p>
+            <p>Rewrite your dev history</p>
+            <p>Experiment!</p>
+            <p>TODO...</p>
           </div>
         </section>
       </div>
@@ -384,7 +437,11 @@
     <script src="https://cdn.jsdelivr.net/npm/reveal.js-mermaid-plugin@11.4.1/plugin/mermaid/mermaid.js"></script>
     <script>
       // Reveal.initialize({plugins: [RevealNotes, RevealHighlight], });
-      Reveal.initialize({ plugins: [RevealNotes, RevealMermaid], hash: true });
+      Reveal.initialize({
+        plugins: [RevealNotes, RevealMermaid],
+        hash: true,
+        slideNumber: "c/t",
+      });
     </script>
   </body>
 </html>
