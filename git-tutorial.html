@@ -413,14 +413,60 @@
         </section>
         <section>
           <h3>Understanding the “upstream”</h3>
-          <div style="text-align: left">
+          <div style="text-align: left" class="r-fit-text">
             <p>Each local branch can have an “upstream”.</p>
             <p>
               E.g., by default <code>main</code>'s upstream is
               <code>origin/main</code>.
             </p>
+            <p>The upstream just sets some defaults:</p>
+            <table>
+              <colgroup>
+                <col span="1" style="width: 27%" />
+                <col span="1" style="width: 72%" />
+              </colgroup>
+              <tr>
+                <td><code>git push</code></td>
+                <td>&rarr; push cur. branch to its upstream</td>
+              </tr>
+              <tr>
+                <td><code>git fetch</code></td>
+                <td>&larr; fetch from the upstream's remote</td>
+              </tr>
+              <tr>
+                <td><code>git merge</code></td>
+                <td>&larrtl; merge the remote-tracking copy of the upstream</td>
+              </tr>
+              <tr>
+                <td><code>git pull</code></td>
+                <td>&larr; fetch and &larrtl; merge from the upstream</td>
+              </tr>
+            </table>
           </div>
         </section>
+        <section>
+          <h3>Understanding the “upstream”</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>Useful commands to manipulate the upstream</p>
+            <ul>
+              <li>
+                Display the upstream information for all your branches. <br />
+                <code type="fragment">git branch -v -v</code>
+              </li>
+              <li>
+                Set the upstream when you first push a branch. <br />
+                <code type="fragment">git push -u origin dev.myfeature</code>
+              </li>
+              <li>
+                Set or reset the upstream for an existing branch <br />
+                <code type="fragment"
+                  >git branch -u origin/dev.myfeature dev.myfeature</code
+                >
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!--
         <section>
           <h3>But don't rebase the official history</h3>
           <div style="text-align: left">
@@ -437,6 +483,7 @@
             </p>
           </div>
         </section>
+        -->
         <section>
           <h3>Git commands for branches</h3>
           <div style="text-align: left">
@@ -466,15 +513,15 @@
                 <td>Switch to a branch</td>
               </tr>
               <tr>
-                <td><code>git push -u origin my_br</code></td>
+                <td><code>git push -u origin dev.feat</code></td>
                 <td>First push of a branch</td>
               </tr>
               <tr>
-                <td><code>git push origin my_br</code></td>
+                <td><code>git push origin dev.feat</code></td>
                 <td>Push branch updates</td>
               </tr>
               <tr>
-                <td><code>git push --force-with-lease origin my_br</code></td>
+                <td><code>git push --force-with-lease origin dev.feat</code></td>
                 <td>Push after a rebase</td>
               </tr>
               <tr>
@@ -517,10 +564,11 @@
         <section>
           <h3>Key takeaways</h3>
           <div style="text-align: left">
+            <p>Find and use a graph viewer you like</p>
             <p>Branches are cheap</p>
-            <p>Rewrite your dev history</p>
+            <p>Fetch and rebase, rather than pull</p>
+            <p>Rewrite your dev branches</p>
             <p>Experiment!</p>
-            <p>TODO...</p>
           </div>
         </section>
       </div>
