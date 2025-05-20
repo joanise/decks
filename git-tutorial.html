@@ -42,12 +42,30 @@
       <div class="slides">
         <section>
           <h1>An opinionated<br />Git tutorial</h1>
-          <p>by Eric Joanis<br>
-          <a href="https://joanise.github.io/decks/git-tutorial.html">
-            <img width="270px" src="assets/deck-qr-code.png" alt="QR code to this deck"
-          /></a>
-          <br>
-          <small>&copy; 2025, National Research Council Canada</small></p>
+          <p>&nbsp;</p>
+          <p>by Eric Joanis</p>
+          <p class="r-stretch">&nbsp;</p>
+          <p><small>&copy; 2025, National Research Council Canada</small></p>
+          <div style="position: absolute; top: 270px; right: 10px">
+            <a href="https://joanise.github.io/decks/git-tutorial.html">
+              <img
+                width="300px"
+                src="assets/deck-qr-code.png"
+                alt="QR code to this deck"
+            /></a>
+          </div>
+        </section>
+        <section>
+          <h3>Motivation</h3>
+          <div style="text-align: left">
+            <p>In this tutorial, I hope you will learn to:</p>
+            <ul>
+              <li>get comfortable with Git</li>
+              <li>use the command line (yes!)</li>
+              <li>commit and rebase a lot</li>
+              <li>not be afraid of making mistakes</li>
+            </ul>
+          </div>
         </section>
         <section>
           <h3>Motivation</h3>
@@ -105,54 +123,45 @@
           </div>
         </section>
         <section>
-          <h3>The basics, with a hint of controversy</h3>
-          <div style="text-align: left" class="r-fit-text">
-            <p><code>git clone https://server/space/repo.git</code></p>
-            <p><code>git checkout -b dev.myfeature</code></p>
-            <p>
-              Work and commit stuff with <code>git add</code> and
-              <code>git commit</code>
-            </p>
-            <p><code>git fetch</code> (please don't pull!)</p>
-            <p><code>git rebase</code> (yes, please clean up your history!)</p>
-            <p><code>git push</code> (usually to a dev branch, for a PR)</p>
-            <p>Submit a Pull/Merge request</p>
+          <h3>The basics</h3>
+          <div style="text-align: left">
+            <p>A <b>Git repo</b> is a graph:</p>
+            <div style="text-align: center" class="mermaid">
+              <pre>
+                gitGraph
+                  commit
+                  commit
+                  branch dev.feature1
+                  commit
+                  commit
+                  checkout main
+                  commit
+                  branch dev.bug-fix2
+                  commit
+                  checkout main
+                  commit
+                  merge dev.feature1
+                  commit
+              </pre>
+            </div>
           </div>
         </section>
         <section>
-          <h3>A Git repo is a graph</h3>
-          <p>&nbsp;</p>
-          <div style="text-align: center" class="mermaid">
-            <pre>
-               gitGraph
-                commit
-                commit
-                branch dev.feature1
-                commit
-                commit
-                checkout main
-                commit
-                branch dev.bug-fix2
-                commit
-                checkout main
-                commit
-                merge dev.feature1
-                commit
-              </pre
-            >
-          </div>
-        </section>
-        <section>
-          <h3>A commit is a snapshot</h3>
+          <h3>The basics</h3>
           <div style="text-align: left" class="r-fit-text">
             <p>A <b>commit</b> is:</p>
             <ul>
-              <li>a <b>node</b> in the DAG</li>
-              <li>with a <b>parent</b> (or several, or none)</li>
+              <li>a <b>node</b> in the graph</li>
+              <li>with one <b>parent</b></li>
+              <ul>
+                <li>or several parents for a merge commit</li>
+                <li>or no parents for the initial commit</li>
+              </ul>
               <li>with a <b>complete snapshot</b> of the code base</li>
             </ul>
           </div>
         </section>
+        <!--
         <section>
           <h3>Isn't a commit a <i>change set</i>?</h3>
           <div style="text-align: left" class="r-fit-text">
@@ -176,18 +185,22 @@
             <img src="assets/git-loga.png" alt="git loga" />
           </div>
         </section>
+        -->
         <section>
           <h3>Use a graph viewer</h3>
           <div style="text-align: left" class="r-fit-text">
             Any idea what's going on here?<br />
             <code>$ git log --oneline --decorate --all</code>
           </div>
-          <img src="assets/git-log-oneline-long.png" alt="git log, no graph" />
+          <img
+            src="assets/git-log-oneline-long-annotated.png"
+            alt="git log, no graph"
+          />
         </section>
         <section>
           <h3>Use a graph viewer</h3>
           <img
-            src="assets/git-logs-long.png"
+            src="assets/git-logs-long-annotated2.png"
             alt="git logs, showing the graph"
           />
         </section>
@@ -218,6 +231,26 @@
                 <!--<img src="assets/git-loga.png" alt="git loga" />-->
               </li>
             </ul>
+          </div>
+        </section>
+        <section>
+          <h3>Use a graph viewer</h3>
+          <div style="text-align: left">
+            <p>On GitHub: <code>Insights</code> / <code>Network</code></p>
+            <img
+              src="assets/github-network-graph.png"
+              alt="Network view in GitHub"
+            />
+          </div>
+        </section>
+        <section>
+          <h3>Use a graph viewer</h3>
+          <div style="text-align: left">
+            <p>On GitLab: <code>Code</code> / <code>Repository Graph</code></p>
+            <img
+              src="assets/gitlab-repository-graph.png"
+              alt="Repo graph view in GitLab"
+            />
           </div>
         </section>
         <section>
@@ -252,9 +285,9 @@
               </code>
             </p>
             <p><code>git rebase -i main</code></p>
-            <img src="assets/rebase-i.png" alt="rebasing menu" />
+            <img src="assets/rebase-i-annotated.png" alt="rebasing menu" />
             <img
-              src="assets/history-rewrite.png"
+              src="assets/history-rewrite-annotated.png"
               alt="long and clean versions of a feature branch"
             />
           </div>
@@ -328,6 +361,7 @@
             <p>Alternative story &mdash; repeat three times:</p>
             <ul>
               <li><code>git commit</code></li>
+              <li>Eric pushes some changes</li>
               <li><code>git fetch</code></li>
               <li><code>git rebase origin/main</code></li>
             </ul>
@@ -364,7 +398,10 @@
               <code>git merge</code> merges those changes into your local
               branch.
             </p>
-            <p>But is that really what you want?</p>
+            <p>
+              But is that really what you want? <br />
+              Often, no: I usually prefer to rebase.
+            </p>
           </div>
         </section>
         <section>
@@ -373,6 +410,16 @@
             src="assets/git-remote-vs-local.drawio.png"
             alt="Diagram of local, remote-tracking, and remote branches"
           />
+        </section>
+        <section>
+          <h3>Understanding the “upstream”</h3>
+          <div style="text-align: left">
+            <p>Each local branch can have an “upstream”.</p>
+            <p>
+              E.g., by default <code>main</code>'s upstream is
+              <code>origin/main</code>.
+            </p>
+          </div>
         </section>
         <section>
           <h3>But don't rebase the official history</h3>
