@@ -41,11 +41,13 @@
     <div class="reveal">
       <div class="slides">
         <section>
-          <p>&nbsp;</p>
           <h1>An opinionated<br />Git tutorial</h1>
-          <p>by Eric Joanis</p>
-          <p class="r-stretch"></p>
-          <p><small>&copy; 2025, National Research Council Canada</small></p>
+          <p>by Eric Joanis<br>
+          <a href="https://joanise.github.io/decks/git-tutorial.html">
+            <img width="270px" src="assets/deck-qr-code.png" alt="QR code to this deck"
+          /></a>
+          <br>
+          <small>&copy; 2025, National Research Council Canada</small></p>
         </section>
         <section>
           <h3>Motivation</h3>
@@ -118,16 +120,10 @@
           </div>
         </section>
         <section>
-          <h3>A Git repo is a Directed Acyclic Graph</h3>
-          <div style="text-align: left" class="r-fit-text">
-            <p>A <b>commit</b> is:</p>
-            <ul>
-              <li>a <b>node</b> in the DAG</li>
-              <li>with a <b>parent</b> (or several, or none)</li>
-              <li>with a <b>complete snapshot</b> of the code base</li>
-            </ul>
-            <div style="text-align: center" class="mermaid">
-              <pre>
+          <h3>A Git repo is a graph</h3>
+          <p>&nbsp;</p>
+          <div style="text-align: center" class="mermaid">
+            <pre>
                gitGraph
                 commit
                 commit
@@ -142,8 +138,19 @@
                 commit
                 merge dev.feature1
                 commit
-              </pre>
-            </div>
+              </pre
+            >
+          </div>
+        </section>
+        <section>
+          <h3>A commit is a snapshot</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <p>A <b>commit</b> is:</p>
+            <ul>
+              <li>a <b>node</b> in the DAG</li>
+              <li>with a <b>parent</b> (or several, or none)</li>
+              <li>with a <b>complete snapshot</b> of the code base</li>
+            </ul>
           </div>
         </section>
         <section>
@@ -348,14 +355,24 @@
               <li><code>git fetch</code></li>
               <li><code>git merge</code></li>
             </ol>
-            <p><code>git fetch</code> is a network operation only: copy branches on the remote into remote-tracking branches on your computer, e.g., <code>origin/main</code>.</p>
-            <p><code>git merge</code> merges those changes into your local branch.</p>
+            <p>
+              <code>git fetch</code> is a network operation only: copy branches
+              on the remote into remote-tracking branches on your computer,
+              e.g., <code>origin/main</code>.
+            </p>
+            <p>
+              <code>git merge</code> merges those changes into your local
+              branch.
+            </p>
             <p>But is that really what you want?</p>
           </div>
         </section>
         <section>
           <h3>Understanding remote-tracking branches</h3>
-          <img src="assets/git-remote-vs-local.drawio.png" alt="Diagram of local, remote-tracking, and remote branches">
+          <img
+            src="assets/git-remote-vs-local.drawio.png"
+            alt="Diagram of local, remote-tracking, and remote branches"
+          />
         </section>
         <section>
           <h3>But don't rebase the official history</h3>
