@@ -46,13 +46,17 @@
           <p>by Eric Joanis</p>
           <p class="r-stretch">&nbsp;</p>
           <p><small>&copy; 2025, National Research Council Canada</small></p>
-          <div style="position: absolute; top: 270px; right: 10px">
-            <a href="https://joanise.github.io/decks/git-tutorial.html">
-              <img
-                width="300px"
-                src="assets/deck-qr-code.png"
-                alt="QR code to this deck"
-            /></a>
+          <div style="position: absolute; top: 250px; right: 10px">
+            <p>
+              Slides: <br />
+              <a href="https://joanise.github.io/decks/git-tutorial.html">
+                <img
+                  width="300px"
+                  style="padding: 0; margin: 0"
+                  src="assets/deck-qr-code.png"
+                  alt="QR code to this deck"
+              /></a>
+            </p>
           </div>
         </section>
         <section>
@@ -163,15 +167,15 @@
         <section>
           <h3>The basics</h3>
           <div style="text-align: left" class="r-fit-text">
-            <p>A <b>commit</b> is:</p>
+            <p>A <b>commit</b> is a <b>node</b> in the graph with:</p>
             <ul>
-              <li>a <b>node</b> in the graph</li>
-              <li>with one <b>parent</b></li>
+              <li>one <b>parent</b></li>
               <ul>
                 <li>or several parents for a merge commit</li>
                 <li>or no parents for the initial commit</li>
               </ul>
-              <li>with a <b>complete snapshot</b> of the code base</li>
+              <li>a <b>complete snapshot</b> of the code base</li>
+              <li>metadata about who made the commit and when</li>
             </ul>
           </div>
         </section>
@@ -203,8 +207,8 @@
         <section>
           <h3>Use a graph viewer</h3>
           <div style="text-align: left" class="r-fit-text">
-            Any idea what's going on here?<br />
-            <code>$ git log --oneline --decorate --all</code>
+            Unclear view: just <code>git log</code>, or<br />
+            <code>git log --oneline --decorate --all</code>
           </div>
           <img
             src="assets/git-log-oneline-long-annotated.png"
@@ -273,11 +277,12 @@
             <p>Branching is cheap</p>
             <p>
               <code>git switch -c dev.something</code><br />
+              <code>git add &lt;files to add></code><br />
               <code>git commit -m "some commit"</code><br />
               <code>git fetch</code><br />
               <code>git rebase origin/main</code><br />
+              <code>git push --force-with-lease</code>
             </p>
-            <p>&nbsp;</p>
             <p>Commit often, and clean up after</p>
             <p>
               Your <code>dev</code> branches are yours!<br />
@@ -288,18 +293,25 @@
         <section>
           <h3>Commit a lot but clean up for the PR</h3>
           <div style="text-align: left">
+            <!--
             <p style="line-height: 0.7">
               <code style="font-size: 0.5em">
                 git switch -c dev.branching<br />
-                git commit -a -m'Starting drafting branching and rebasing'<br />
-                git commit -a -m'Ooops, typo'<br />
-                git commit -a -m'Make it clearer'<br />
-                git commit -a -m"Why won't all the lines fit on the slide?"<br />
-                git commit -a -m'Typo'
+                git commit -a -m 'Starting drafting branching and rebasing'<br />
+                git commit -a -m 'Ooops, typo'<br />
+                git commit -a -m 'Make it clearer'<br />
+                git commit -a -m 'Typo'
+                git commit -a -m "Why won't all the lines fit on the slide?"<br />
               </code>
             </p>
-            <p><code>git rebase -i main</code></p>
-            <img src="assets/rebase-i-annotated.png" alt="rebasing menu" />
+            -->
+            <p><code>git rebase --interactive main</code></p>
+            <img
+              src="assets/rebase-i-annotated.png"
+              alt="rebasing menu"
+              width="100%"
+            />
+            <p>Results:</p>
             <img
               src="assets/history-rewrite-annotated.png"
               alt="long and clean versions of a feature branch"
@@ -390,8 +402,15 @@
           <div style="text-align: left">
             <p>And merge the PR &nbsp; ☺️</p>
             <img
+              src="assets/git-pull-3times-merged-just-graph.png"
+              alt="three rebases and a merge, graph only"
+              height="250"
+            />
+            <small>vs</small>
+            <img
               src="assets/git-rebase-instead-merged.png"
               alt="three rebases and a merge"
+              width="90%"
             />
           </div>
         </section>
@@ -465,15 +484,15 @@
             <ul>
               <li>
                 Display the upstream information for all your branches. <br />
-                <code type="fragment">git branch -v -v</code>
+                <span class="fragment"><code>git branch -v -v</code> (yes, two -v's!)</span>
               </li>
               <li>
                 Set the upstream when you first push a branch. <br />
-                <code type="fragment">git push -u origin dev.myfeature</code>
+                <code class="fragment">git push -u origin dev.myfeature</code>
               </li>
               <li>
                 Set or reset the upstream for an existing branch <br />
-                <code type="fragment"
+                <code class="fragment"
                   >git branch -u origin/dev.myfeature dev.myfeature</code
                 >
               </li>
@@ -499,7 +518,29 @@
         </section>
         -->
         <section>
-          <h3>Git commands for branches</h3>
+          <h3>Key takeaways</h3>
+          <div style="text-align: left">
+            <p>Find and use a graph viewer you like</p>
+            <p>Branches are cheap</p>
+            <p>Fetch and rebase, rather than pull</p>
+            <p>Rewrite your dev branches</p>
+            <p>Experiment!</p>
+          </div>
+          <div style="position: absolute; top: 120px; right: 10px">
+            <p>
+              Slides: <br />
+              <a href="https://joanise.github.io/decks/git-tutorial.html">
+                <img
+                  width="300px"
+                  style="padding: 0; margin: 0"
+                  src="assets/deck-qr-code.png"
+                  alt="QR code to this deck"
+              /></a>
+            </p>
+          </div>
+        </section>
+        <section>
+          <h3>Cheat sheet: branches</h3>
           <div style="text-align: left">
             <table style="font-size: 0.65em; width: 100%">
               <colgroup>
@@ -551,7 +592,7 @@
           </div>
         </section>
         <section>
-          <h3>Git commands for rewriting history</h3>
+          <h3>Cheat sheet: rewriting history</h3>
           <div style="text-align: left">
             <table style="font-size: 0.65em; width: 100%">
               <colgroup>
@@ -575,16 +616,6 @@
                 <td>"Steal" one commit from another branch</td>
               </tr>
             </table>
-          </div>
-        </section>
-        <section>
-          <h3>Key takeaways</h3>
-          <div style="text-align: left">
-            <p>Find and use a graph viewer you like</p>
-            <p>Branches are cheap</p>
-            <p>Fetch and rebase, rather than pull</p>
-            <p>Rewrite your dev branches</p>
-            <p>Experiment!</p>
           </div>
         </section>
       </div>
