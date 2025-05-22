@@ -123,12 +123,12 @@
               <li>Make changes to it.</li>
               <p class="fragment">
                 Write and change code <br />
-                <code>git add &lt;changed files></code> <br />
+                <code>git switch -c dev.myfeature</code> <br />
+                <code>git add &lt;changed files to stage></code> <br />
                 <code>git commit</code>
               </p>
               <li>Contribute these changes to the project.</li>
               <p class="fragment">
-                <code>git switch -c dev.myfeature</code> <br />
                 <code>git push -u origin dev.myfeature</code>
               </p>
               <li>Retrieve changes others have made.</li>
@@ -146,6 +146,7 @@
             <p>A <b>Git repo</b> is a graph:</p>
             <div style="text-align: center" class="mermaid">
               <pre>
+                %%{init: { 'themeVariables': { 'commitLabelFontSize': '1em' } } }%%
                 gitGraph
                   commit
                   commit
@@ -155,6 +156,10 @@
                   checkout main
                   commit
                   branch dev.bug-fix2
+                  commit
+                  checkout dev.feature1
+                  commit
+                  checkout dev.bug-fix2
                   commit
                   checkout main
                   commit
@@ -205,9 +210,36 @@
         </section>
         -->
         <section>
+          <h3>Inspecting commits</h3>
+          <div style="text-align: left">
+            <p>
+              <code>git show &lt;commit-ish></code> shows one commit's message
+              and the code changes
+            </p>
+            <p><code>git log</code> shows the history with full messages</p>
+            <pre>
+commit 9ed0deb051 (HEAD -> main)
+Author: Eric Joanis &lt;eric.joanis@nrc-cnrc.gc.ca>
+Date:   Thu May 22 09:33:10 2025 -0400
+
+    feat: mention VSCode graph view
+
+commit ecce04220e (origin/main, origin/HEAD)
+Author: Eric Joanis &lt;eric.joanis@nrc-cnrc.gc.ca>
+Date:   Wed May 21 16:30:08 2025 -0400
+
+    Some improvements from feedback by reviewers
+
+commit c1e6596744
+[...]
+          </pre
+            >
+          </div>
+        </section>
+        <section>
           <h3>Use a graph viewer</h3>
           <div style="text-align: left" class="r-fit-text">
-            Unclear view: just <code>git log</code>, or<br />
+            Compact log:<br />
             <code>git log --oneline --decorate --all</code>
           </div>
           <img
@@ -217,10 +249,16 @@
         </section>
         <section>
           <h3>Use a graph viewer</h3>
-          <img
-            src="assets/git-logs-long-annotated2.png"
-            alt="git logs, showing the graph"
-          />
+          <div style="text-align: left">
+            With <code>--graph</code>*:
+            <img
+              src="assets/git-logs-long-annotated2.png"
+              alt="git logs, showing the graph"
+              width="78%"
+            />
+            <br />
+            <small>*sort of -- see next slide</small>
+          </div>
         </section>
         <section>
           <h3>Use a graph viewer</h3>
@@ -232,8 +270,9 @@
                 <code>tig --all</code>, &nbsp; <code>gitk --all</code>, &nbsp;
                 <code>git-graph</code>, &nbsp; <code>serie</code>, &nbsp; etc.
               </li>
+              <li>VSCode / Source Control / GRAPH</li>
               <li>
-                My favourite alias: <code>git loga</code> (output: see previous
+                My favourite alias: <code>git loga</code> (e.g.: see previous
                 slide) <br />
                 In my <code>~/.gitconfig</code>:
                 <pre style="box-shadow: none; margin-left: 0">
@@ -277,13 +316,13 @@
             <p>Branching is cheap</p>
             <p>
               <code>git switch -c dev.something</code><br />
-              <code>git add &lt;files to add></code><br />
+              <code>git add &lt;files to stage></code><br />
               <code>git commit -m "some commit"</code><br />
               <code>git fetch</code><br />
               <code>git rebase origin/main</code><br />
               <code>git push --force-with-lease</code>
             </p>
-            <p>Commit often, and clean up after</p>
+            <p>Commit a lot, but clean up for the Pull Request (PR)</p>
             <p>
               Your <code>dev</code> branches are yours!<br />
               Rewrite them even if you've already pushed them.
@@ -291,7 +330,7 @@
           </div>
         </section>
         <section>
-          <h3>Commit a lot but clean up for the PR</h3>
+          <h3>Branching and rebasing</h3>
           <div style="text-align: left">
             <!--
             <p style="line-height: 0.7">
@@ -300,8 +339,8 @@
                 git commit -a -m 'Starting drafting branching and rebasing'<br />
                 git commit -a -m 'Ooops, typo'<br />
                 git commit -a -m 'Make it clearer'<br />
-                git commit -a -m 'Typo'
                 git commit -a -m "Why won't all the lines fit on the slide?"<br />
+                git commit -a -m 'Typo'
               </code>
             </p>
             -->
@@ -319,8 +358,30 @@
           </div>
         </section>
         <section>
-          <h3>Commit a lot but clean up for the PR</h3>
+          <h3>Branching and rebasing</h3>
           <div style="text-align: left">
+            <p>Interactive rebase actions:</p>
+            <ul>
+              <li><b>pick</b>: keep the commit</li>
+              <li><b>reword</b>: edit just the commit message</li>
+              <li><b>edit</b>: edit the commit contents</li>
+              <li>
+                <b>squash</b>: combine with the previous commit and edit the
+                combined message
+              </li>
+              <li>
+                <b>fixup</b>: combine with the previous commit, discarding the
+                message
+              </li>
+              <li>Delete a line to <b>drop</b> a commit</li>
+              <li>Reorder lines to <b>reorder</b> commits</li>
+            </ul>
+          </div>
+        </section>
+        <section>
+          <h3>Branching and rebasing</h3>
+          <div style="text-align: left">
+            <p>Another option:</p>
             <p>
               <a href="https://render.com/blog/git-organized-a-better-git-flow"
                 >Git Organized: A Better Git Workflow
@@ -389,6 +450,7 @@
               <li><code>git commit</code></li>
               <li>Eric pushes some changes</li>
               <li><code>git fetch</code></li>
+              <li>Examine what changed with your graph viewer</li>
               <li><code>git rebase origin/main</code></li>
             </ul>
             <img
@@ -419,22 +481,12 @@
           <div style="text-align: left">
             <p><code>git pull</code> is just a “convenient” combination of:</p>
             <ol>
-              <li><code>git fetch</code></li>
-              <li><code>git merge</code></li>
+              <li><code>git fetch</code> &mdash; network copy operation</li>
+              <li>
+                <code>git merge</code> &mdash; merge into your local branch
+              </li>
             </ol>
-            <p>
-              <code>git fetch</code> is a network operation only: copy branches
-              on the remote into remote-tracking branches on your computer,
-              e.g., <code>origin/main</code>.
-            </p>
-            <p>
-              <code>git merge</code> merges those changes into your local
-              branch.
-            </p>
-            <p>
-              But is that really what you want? <br />
-              Often, no: I usually prefer to rebase.
-            </p>
+            <p>But is that usually what you want?</p>
           </div>
         </section>
         <section>
@@ -443,6 +495,13 @@
             src="assets/git-remote-vs-local.drawio.png"
             alt="Diagram of local, remote-tracking, and remote branches"
           />
+          <aside class="notes">
+            <ul>
+              <li>fetch : remote &rarr; remote-tracking</li>
+              <li>merge : remote-tracking &rarr; local</li>
+              <li>push : local &rarr; remote (and update remote-tracking)</li>
+            </ul>
+          </aside>
         </section>
         <section>
           <h3>Understanding the “upstream”</h3>
@@ -456,7 +515,6 @@
             <table>
               <colgroup>
                 <col span="1" style="width: 27%" />
-                <col span="1" style="width: 72%" />
               </colgroup>
               <tr>
                 <td><code>git push</code></td>
@@ -484,7 +542,9 @@
             <ul>
               <li>
                 Display the upstream information for all your branches. <br />
-                <span class="fragment"><code>git branch -v -v</code> (yes, two -v's!)</span>
+                <span class="fragment"
+                  ><code>git branch -v -v</code> (yes, two -v's!)</span
+                >
               </li>
               <li>
                 Set the upstream when you first push a branch. <br />
@@ -518,11 +578,144 @@
         </section>
         -->
         <section>
+          <h3>Handling conflicts</h3>
+          <div style="text-align: left" class="r-fit-text">
+            <pre style="box-shadow: none; margin-left: 0">
+[...]
+        run: |
+          date
+<<<<<<< HEAD
+          for shardno in 1 2 3 4; do echo "shard $shardno" && sleep 3 & done; wait
+||||||| cdabb2c07a
+          for shard in 1 2 3 4; do echo "shard $shard" && sleep 3 & done; wait
+=======
+          for shard in 1 2 3 4; do
+            echo "shard $shard" && sleep 3 &
+          done; wait
+>>>>>>> origin/main
+          echo "all done"
+          date
+[...]
+            </pre>
+            Hint: run <br />
+            <code>git config --global merge.conflictStyle diff3</code>
+          </div>
+        </section>
+        <section>
+          <h3>Conventional Commits</h3>
+          <div style="text-align: left">
+            <img
+              src="assets/automated-release-notes.png"
+              alt="Automated release notes"
+            />
+          </div>
+          <aside class="notes">
+            There release notes were automatically generated.
+          </aside>
+        </section>
+        <section>
+          <h3>Conventional Commits</h3>
+          <div style="text-align: left">
+            <pre style="margin: 0">
+feat: allow panphon 0.21 where possible
+
+We're compatible with Panphon 0.21 in some cases.
+Also make the unit test accept 0.21 and older versions.
+
+Fixes #388
+            </pre>
+            <p>
+              See
+              <a href="https://www.conventionalcommits.org">
+                https://www.conventionalcommits.org
+              </a>
+            </p>
+            <p>
+              Standard commit types: <code>fix</code>, <code>feat</code>,
+              <code>build</code>, <code>chore</code>, <code>ci</code>,
+              <code>docs</code>, <code>style</code>, <code>perf</code>,
+              <code>refactor</code>, <code>test</code>
+            </p>
+          </div>
+          <aside class="notes">
+            <small>
+              <pre>
+&lt;type>[optional scope]: &lt;description>
+
+[optional body]
+
+[optional footer(s)]
+              </pre>
+            </small>
+          </aside>
+        </section>
+        <section>
+          <h3>
+            Reset vs Revert, and <br />
+            how to drop a commit
+          </h3>
+          <div style="text-align: left"></div>
+          <table style="font-size: 0.65em; width: 100%">
+            <colgroup>
+              <col span="1" style="width: 50%" />
+            </colgroup>
+            <tr>
+              <td><code>git revert &lt;commit></code></td>
+              <td>
+                Create a new commit that undoes the changes in
+                <code>&lt;commit></code>. <br />
+              </td>
+            </tr>
+            <tr>
+              <td>Interactive rebase</td>
+              <td>The simplest way to drop a commit from your dev branch.</td>
+            </tr>
+            <tr>
+              <td><code>git reset [commit-ish]</code></td>
+              <td>
+                Mixed reset: change HEAD and the index, but not the sandbox.
+              </td>
+            </tr>
+            <tr>
+              <td><code>git reset --hard [commit-ish]</code></td>
+              <td>💥KAPOW!💥 local changes are gone ⚠️Can't be undone⚠️</td>
+            </tr>
+          </table>
+        </section>
+        <section>
+          <h3>Using multiple remotes</h3>
+          <div style="text-align: left; font-size: 0.9em">
+            <p>When you fork a repo, it is helpful to use multiple remotes.</p>
+            <p>Useful commands after cloning your own fork:</p>
+            <p><code>git remote add upstream &lt;Upstream URL></code></p>
+            <p><code>git fetch upstream</code></p>
+            <p><code>git rebase upstream/main</code></p>
+            <p><code>git remote -v</code></p>
+            <p>Or, after cloning the original:</p>
+            <p><code>git remote add fork &lt;URL of my fork></code></p>
+            <p><code>git push fork dev.feature</code></p>
+          </div>
+        </section>
+        <section>
+          <h3>Other topics</h3>
+          <div style="text-align: left">
+            <ul>
+              <li><code>git diff</code></li>
+              <li>Pull Requests</li>
+              <li>Submodules</li>
+              <li>ssh vs https</li>
+              <li>ssh agent</li>
+              <li>LFS</li>
+              <li><code>git bisect</code></li>
+            </ul>
+          </div>
+        </section>
+        <section>
           <h3>Key takeaways</h3>
           <div style="text-align: left">
             <p>Find and use a graph viewer you like</p>
             <p>Branches are cheap</p>
-            <p>Fetch and rebase, rather than pull</p>
+            <p>Fetch, examine, and rebase</p>
             <p>Rewrite your dev branches</p>
             <p>Experiment!</p>
           </div>
@@ -545,7 +738,6 @@
             <table style="font-size: 0.65em; width: 100%">
               <colgroup>
                 <col span="1" style="width: 71%" />
-                <col span="1" style="width: 29%" />
               </colgroup>
               <tr>
                 <td>
@@ -556,8 +748,8 @@
                 <td>Create a branch and switch to it</td>
               </tr>
               <tr>
-                <td><code>git branch new_branch commitish</code></td>
-                <td>Create a branch from a specific commit(ish)</td>
+                <td><code>git branch new_branch &lt;commit-ish></code></td>
+                <td>Create a branch from a specific commit(-ish)</td>
               </tr>
               <tr>
                 <td>
@@ -596,8 +788,7 @@
           <div style="text-align: left">
             <table style="font-size: 0.65em; width: 100%">
               <colgroup>
-                <col span="1" style="width: 61%" />
-                <col span="1" style="width: 39%" />
+                <col span="1" style="width: 50%" />
               </colgroup>
               <tr>
                 <td><code>git fetch</code></td>
@@ -608,12 +799,20 @@
                 <td>Rebase my current branch onto origin/main</td>
               </tr>
               <tr>
-                <td><code>git rebase -i commitish</code></td>
+                <td><code>git rebase -i &lt;commit-ish></code></td>
                 <td>Interactive rebase</td>
               </tr>
               <tr>
-                <td><code>git cherry-pick commitish</code></td>
+                <td><code>git rebase --abort</code></td>
+                <td>Abort a rebase that's not going well</td>
+              </tr>
+              <tr>
+                <td><code>git cherry-pick &lt;commit-ish></code></td>
                 <td>"Steal" one commit from another branch</td>
+              </tr>
+              <tr>
+                <td><code>git cherry-pick --abort</code></td>
+                <td>Abort a cherry-pick that's not going well</td>
               </tr>
             </table>
           </div>
